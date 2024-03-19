@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 16px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #fafafa;
+    color: #212121;
+    line-height: 1.5;
+}
