@@ -11,6 +11,6 @@ function createCounter() {
 
 const counter = createCounter();
 
-counter();
-counter();
-counter();
+counter(); //1
+counter(); //2
+counter(); //3
