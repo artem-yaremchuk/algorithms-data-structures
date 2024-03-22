@@ -194,3 +194,135 @@ bank.serveClients();
 // // Довжина та перевірка на пустоту
 // console.log(deque.length()); // Output: 3
 // console.log(deque.isEmpty()); // Output: false
+
+// LinkedList
+class Node {
+    constructor(data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    constructor() {
+        this.head = null;
+    }
+
+    insertAtBeginning(data) {
+        const newNode = new Node(data);
+        newNode.next = this.head;
+        this.head = newNode;
+    }
+
+    insertAtEnd(data) {
+        const newNode = new Node(data);
+        if (!this.head) {
+            this.head = newNode;
+        } else {
+            let cur = this.head;
+            while (cur.next) {
+                cur = cur.next;
+            }
+            cur.next = newNode;
+        }
+    }
+
+    insertAfter(prevNode, data) {
+        if (!prevNode) {
+            console.log("Попереднього вузла не існує.");
+            return;
+        }
+        const newNode = new Node(data);
+        newNode.next = prevNode.next;
+        prevNode.next = newNode;
+    }
+
+    deleteNode(key) {
+        let cur = this.head;
+        if (cur && cur.data === key) {
+            this.head = cur.next;
+            cur = null;
+            return;
+        }
+        let prev = null;
+        while (cur && cur.data !== key) {
+            prev = cur;
+            cur = cur.next;
+        }
+        if (!cur) {
+            return;
+        }
+        prev.next = cur.next;
+        cur = null;
+    }
+
+    searchElement(data) {
+        let cur = this.head;
+        while (cur) {
+            if (cur.data === data) {
+                return cur;
+            }
+            cur = cur.next;
+        }
+        return null;
+    }
+
+    printList() {
+        let current = this.head;
+        while (current) {
+            console.log(current.data);
+            current = current.next;
+        }
+    }
+}
+
+// Створюємо зв'язаний список
+const llist = new LinkedList();
+
+// Вставляємо вузли в початок
+llist.insertAtBeginning(5);
+llist.insertAtBeginning(10);
+llist.insertAtBeginning(15);
+
+// Вставляємо вузли в кінець
+llist.insertAtEnd(20);
+llist.insertAtEnd(25);
+
+// Друк зв'язаного списку
+console.log("Зв'язний список:");
+llist.printList();
+
+// Видаляємо вузол
+llist.deleteNode(10);
+
+console.log("Зв'язний список після видалення вузла з даними 10:");
+llist.printList();
+
+// Пошук елемента у зв'язаному списку
+console.log("Шукаємо елемент 15:");
+const element = llist.searchElement(15);
+if (element) {
+    console.log(element.data);
+}
+
+// Створення хеш-таблиці (Map)
+const hashTable = new Map();
+
+// Додавання елемента
+hashTable.set('key1', 'value1');
+hashTable.set('key2', 'value2');
+
+// Виведення результату
+console.log(hashTable); // Map(2) {'key1' => 'value1', 'key2' => 'value2'}
+
+// Видалення елемента
+hashTable.delete('key1');
+
+// Виведення результату
+console.log(hashTable); // Map(1) {'key2' => 'value2'}
+
+const value = hashTable.get('key2');
+console.log(value); // value2
+
+hashTable.set('key2', 'new value');
+console.log(hashTable); // Map(1) { 'key2' => 'new value' }
