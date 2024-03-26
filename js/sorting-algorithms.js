@@ -52,3 +52,28 @@ function selectionSort(arr) {
 
 const numbers1 = [5, 3, 8, 4, 2];
 console.log(selectionSort(numbers1));
+
+// Quick sort. Часова складність О(n log n) у середньому випадку, O(n2) - у найгіршому випадку.
+function quicksort(arr) {
+    if (arr.length <= 1) {
+        return arr;
+    }
+    const pivot = arr[Math.floor(arr.length / 2)];
+    const left = arr.filter(x => x < pivot);
+    const middle = arr.filter(x => x === pivot);
+    const right = arr.filter(x => x > pivot);
+    return [...quicksort(left), ...middle, ...quicksort(right)];
+}
+
+const result = quicksort([5, 3, 8, 4, 2]);
+console.log(result); // Виведе: [2, 3, 4, 5, 8]
+
+// //Merge sort. Часова складність О(n log n)
+// import mergeSort from '@jsundefined/algojs/sort/merge';
+
+// const numbers2 = [5, 3, 8, 4, 2];
+// const sortedNumbers = mergeSort(numbers2);
+
+// console.log(sortedNumbers); // [2, 3, 4, 5, 8]
+
+//Radix sort O(n d)
